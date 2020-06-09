@@ -1,38 +1,342 @@
 .App {
+  display: flex;
+  align-items:stretch;
+  min-height:100vh;
+
+  background-image: linear-gradient(#787878,#404040,#303030,#212121,#141414);
+  font-family: proxima-nova, Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+body {
+  margin:0;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+textarea, input[type=text] {
+  border-radius: 5px;
+  font-family: proxima-nova, Montserrat, sans-serif;
+  box-sizing:border-box;
+  border:none;
+  resize:none;
+}
+textarea:focus, input[type=text]:focus {
+  outline:none;
+}
+
+#logo {
+  width: 110px;
+  height:auto;
+  position:relative;
+  top:9px;
+  margin: 0 5px;
+}
+
+
+.btn {
+  --width: 260px;
+  --height: 75px;
+  background:#EAD832;
+  border-radius: calc(var(--height) / 2);
+  width: var(--width);
+  height: var(--height);
+  color:white;
   text-align: center;
+  line-height: var(--height);
+  font-size: 33px;
+  font-weight: 700;
+  margin: 1px 2.5px;
+}
+.btn:hover {
+  cursor: pointer;
+  --width:265px;
+  --height:77px;
+  filter: brightness(110%);
+  margin:0;
+}
+.btn#save-it {
+  background: #787878;
+  cursor: default;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.loggedIn#save-it {
+  background: #1ED760;
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.main {
+  flex: 1;
+  display:flex;
   min-height: 100vh;
+}
+.main > .container {
+  padding: 100px 10px 40px 50px;
+  display: flex;
+  flex-direction: column;
+  flex:1;
+}
+
+.panel {
+    background-color: black;
+    flex: .33;
+}
+.panel > .container {
+  margin: 0 45px;
+}
+.panel h1 {
+  /*font-family: Montserrat;*/
+  color: #EAD832;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 96px;
+  margin-top: 100px;
+  margin-bottom: 0; 
+
+}
+.panel p {
+  color: white;
+}
+.panel hr {
+  margin: 60px 75% 20px 0;
+}
+.panel .title-div p {
+  margin-top: 5px;
+}
+.panel .desc-div p {
+  margin-right: 20px;
+}
+.panel .bold {
+  color: #EAD832;
+  font-weight: 700;
+}
+.panel .about-contact {
+  position: absolute;
+  bottom: 30px;
+  color: gray;
+}
+
+.placeholder {
+  background:lightgray;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.profile {
+  position: absolute;
+  right: 0;
+  top:0;
+  margin: 20px 30px 0 0;
+}
+.profile * {
+  display: inline-block;
+  vertical-align: middle;
+}
+.profile .user-name {
+  margin: 0 15px 0 0;
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
+}
+.profile .user-name:hover,.placeholder:hover {
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  background-color: #474747;
+  color: #d6d6d6;
+  width: 120px;
+  height:35px;
+  right: 0;
+  top: calc(100% + 5px);
+  display:none;
+  align-items : center;
+  justify-content: flex-start;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.45);
+  border: 1px solid #404040;
+}
+.dropdown span {
+  margin-left: 7px;
+  font-size: 17px;
+}
+.dropdown:hover{
+  cursor: pointer;
+}
+
+
+.say-it {
+  display:flex;
+}
+.say-it .left {
+  flex:1;
+}
+.say-it .desc {
+  color:white;
+}
+.say-it textarea {
+  width:100%;
+  height: 100px;
+  font-size:23px;
+  resize: none;
+  padding: 10px;
+}
+.say-it .settings {
+  display:flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.say-it .settings > label {
+  font-size: 20px;
+  color:#bfbfbf;
+  margin: 10px 10px 0 10px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+.say-it .settings > * {
+  margin: 10px 0 0 0;
+}
+.say-it .switch {
+  margin-right: 10px;
+}
+.say-it .settings .advanced {
+  font-size: 20px;
+  color: #D6D6D6;
+  margin-left: auto;
+  margin-right: 10px;
+}
+.say-it .settings .advanced:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.say-it .btn-container {
+  flex: 0 0 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.say-it .btn {
+  position: relative;
+  bottom: -102px;
+}
+
+.lower {
+  display: flex;
+  margin-top: 50px;
+  flex:1;
+}
+
+.playlist {
+  background-image: linear-gradient(#2a2a2a,#000000);
+  border-radius: 5px;
+  flex: 1;
+  padding: 10px 10px;
+}
+
+.header {
+  text-transform: uppercase;
+  color:#838383;
+  font-size: 16px;
+  min-height:30px;
+  position: relative;
+  border-bottom: 2px solid #474747;
+}
+.header > * {
+  position: absolute;
+  display: inline-block;
+}
+.header .title {
+  left: 3%;
+}
+.header .artist {
+  left: 38%
+}
+.header .album {
+  left: 70%
+}
+
+.songs {
+  list-style-type: none;
+  overflow: auto;
+  white-space: nowrap;
+  min-height: 100%;
+  padding:0;
+  margin:0;
+}
+.song {
+  font-size: 20px;
+  color: #c7c7c7;
+  position: relative;
+  border-bottom: 1px solid #474747;
+  min-height:30px;
+  padding: 14px 0 6px;
+}
+.song:hover {
+  background-color: #474747;
+}
+.song > * {
+  display: inline-block;
+  position: absolute;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+}
+.song > *:hover {
+  color: #1ED760;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.song .track{
+  left: 3%;
+  max-width: 35%
+}
+.song .artist{
+  left:38%;
+  max-width: 32%
+}
+.song .album{
+  left: 70%;
+  max-width:30%
+}
+
+
+.buttons {
+  flex: 0 0 350px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  align-content: flex-end;
+}
+.buttons .save-it {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top:80px;
+  position: relative;
+}
+.buttons .save-it p {
+  position: absolute;
+  bottom: 60px;
+  color: #1ED760;
+}
+.save-it p.loggedIn {
+  display:none;
+}
+.buttons .save-it p:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

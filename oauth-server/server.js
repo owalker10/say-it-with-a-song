@@ -47,6 +47,8 @@ app.get('/callback', function(req, res) {
   })
 })
 
+app.get('/test', (req,res) => res.send("yay!"))
+
 let port = process.env.PORT || 8888
 console.log(`Listening on port ${port}. Go /login to initiate authentication flow.`)
 app.listen(port)
