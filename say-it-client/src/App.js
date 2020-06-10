@@ -8,29 +8,31 @@ import ShareIt from './components/ShareIt'
 import SaveIt from './components/SaveIt'
 import Modal from './components/Modal'
 import { GlobalProvider } from './context/GlobalState'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 function App() {
   return (
-    <GlobalProvider>
-      <div className="App">
-       <Modal />
-        <Panel />
-        <div className="main">
-          <Profile />
-          <div className="container">
-            <SayIt />
-            <div className="lower">
-              <Playlist />
-              <div className="buttons">
-                <ShareIt />
-                <SaveIt />
+    <Router>
+      <GlobalProvider>
+        <div className="App">
+        <Modal />
+          <Panel />
+          <div className="main">
+            <Profile />
+            <div className="container">
+              <SayIt />
+              <div className="lower">
+                <Playlist />
+                <div className="buttons">
+                  <ShareIt />
+                  <SaveIt />
+                </div>
               </div>
             </div>
           </div>
-          
         </div>
-      </div>
       </GlobalProvider>
+    </Router>
     
   );
 }

@@ -36,11 +36,22 @@
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
+
+    animation: modal-in .2s;
 }
 
 .modal-box.share-it {
     height: 330px;
 }
+
+@keyframes modal-in {
+    0% {
+        top:20%;
+        opacity: 0;
+    }
+    100% {}
+}
+
 h1 {
     color: #EAD832;
     font-weight: 700;
@@ -154,3 +165,26 @@ h1 {
     
     background-color: #1ED760;
 }
+
+.advanced.modal-box {
+    width: 800px;
+    height: 450px;
+}
+.advanced h4 {
+    color:white;
+    margin-bottom:30px;
+    font-size:28px;
+}
+.advanced hr {
+    border-top: 2px solid #454545;
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+}
+.advanced label.switch-label {
+    color: #c4c4c4;
+}
+.advanced .switch {
+    margin-right: 20px;
+}
+

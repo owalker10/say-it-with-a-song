@@ -2,6 +2,7 @@
   display: flex;
   align-items:stretch;
   min-height:100vh;
+  min-width:100vh;
 
   background-image: linear-gradient(#787878,#404040,#303030,#212121,#141414);
   font-family: proxima-nova, Montserrat, sans-serif;
@@ -163,7 +164,7 @@ textarea:focus, input[type=text]:focus {
   display:none;
   align-items : center;
   justify-content: flex-start;
-  box-shadow: 0 0 10px 2px rgba(0,0,0,.45);
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.35);
   border: 1px solid #404040;
 }
 .dropdown span {

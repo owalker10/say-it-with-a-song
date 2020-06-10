@@ -1,8 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { GlobalContext } from '../context/GlobalState'
+import { Redirect } from 'react-router-dom'
 
 const Profile = () => {
     const {state: { user, loggedIn } } = useContext(GlobalContext);
+    const [redirected, redirect] = useState(false)
 
     return (
         <>
@@ -21,7 +23,7 @@ const Profile = () => {
 export default Profile
 
 const login = ()=> {
-    fetch('/test')
+    window.location.href = "http://localhost:8888/login"
 }
 
 function openDropdown(id) {

@@ -25,7 +25,10 @@ const initialState = {
         }
     },
     user: {
-        name: "John Smith"
+        name: "John Smith",
+        id: "",
+        auth_code: "",
+        image: ""
     } 
 }
 
