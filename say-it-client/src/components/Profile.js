@@ -1,17 +1,23 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext} from 'react'
 import { GlobalContext } from '../context/GlobalState'
-import { Redirect } from 'react-router-dom'
+import placeholder from './../img/placeholder.jpg'
 
 const Profile = () => {
-    const {state: { user, loggedIn } } = useContext(GlobalContext);
-    const [redirected, redirect] = useState(false)
+    const {dispatch, state: { user, loggedIn } } = useContext(GlobalContext);
+
+    
+    const logout = () => {
+        dispatch({ type: 'LOGOUT' })
+        sessionStorage.removeItem("user")
+        fetch('/logout', { method: 'POST', credentials: 'include'}).then(window.location.reload())
+    }
 
     return (
         <>
         <div className="profile">
-            <p className="user-name" onClick={()=>{openDropdown("profile-dropdown")}}>{user.name}</p>
-            <div className="placeholder" onClick={()=>{openDropdown("profile-dropdown")}}></div>
-            <div className="dropdown" id="profile-dropdown" onClick={login}>
+            <p className="user-name" onClick={()=>{openDropdown("profile-dropdown")}}>{loggedIn ? user.name : ''}</p>
+            <img src={loggedIn ? user.image : placeholder } alt='profile' className="profile-image" onClick={()=>{openDropdown("profile-dropdown")}}></img>
+            <div className="dropdown" id="profile-dropdown" onClick={loggedIn ? logout : login}>
                 <span>{loggedIn ? "Log Out" : "Log In"}</span>
             </div>       
         </div>
@@ -22,17 +28,16 @@ const Profile = () => {
 
 export default Profile
 
-const login = ()=> {
-    window.location.href = "http://localhost:8888/login"
+export const login = () => {
+    window.location.href = sessionStorage.getItem('production')==1 ? "http://localhost:8888/login" : '/login'
 }
+
 
 function openDropdown(id) {
     const hideOnClickAway = (element) => {
         const outsideClickListener = event => {
-            if (!element.contains(event.target)) {
             element.style.display="none"
             removeClickListener()
-            }
         }
 
         const removeClickListener = () => {

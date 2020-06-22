@@ -11,25 +11,26 @@ import { GlobalProvider } from './context/GlobalState'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 function App() {
+
   return (
     <Router>
       <GlobalProvider>
         <div className="App">
-        <Modal />
-          <Panel />
-          <div className="main">
-            <Profile />
-            <div className="container">
-              <SayIt />
-              <div className="lower">
-                <Playlist />
-                <div className="buttons">
-                  <ShareIt />
-                  <SaveIt />
+          <Modal />
+            <Panel />
+            <div className="main">
+              <Profile />
+              <div className="container">
+                <SayIt />
+                <div className="lower">
+                  <Playlist />
+                  <div className="buttons">
+                    <ShareIt />
+                    <SaveIt />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </GlobalProvider>
     </Router>

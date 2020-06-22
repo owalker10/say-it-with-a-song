@@ -6,7 +6,7 @@ import './Switch.css'
 const Switch = ({ checked, id, onChange }) => {
     return (
         <label className="switch">
-            <input type="checkbox" id={id} defaultChecked={checked?"checked":""} onChange={onChange}></input>
+            <input type="checkbox" id={id} checked={checked?"checked":""} onChange={(e)=>{onChange(e.target.checked)}}></input>
             <span className="slider round"></span>
         </label>
     )

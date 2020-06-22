@@ -10,8 +10,8 @@ const Modal = ({ children, display, setDisplay, className }) => {
 
         return (
             ReactDOM.createPortal(
-                <div className="modal-wrapper">
-                    <div className="modal-background" onClick={()=>{setDisplay(false)}}></div>
+                <div className={"modal-wrapper " +className+'-wrap'}>
+                    <div className={"modal-background "+className+'-bg'} onClick={()=>{setDisplay(false)}}></div>
                     <div className={"modal-box "+className}>
                         {children}
                     </div>

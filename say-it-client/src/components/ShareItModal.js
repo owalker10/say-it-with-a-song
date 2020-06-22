@@ -10,7 +10,7 @@ const ShareItModal = (props) => {
         <Modal {...props} className="share-it">
              <h1>SHARE IT</h1>
             <div className="wrapper">
-                <input type='text' className="url-box" id="url-box" readOnly={true} value='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'></input>
+                <input type='text' className="url-box" id="url-box" readOnly={true} value={props.url}></input>
                 <div id="copy">
                     <div className="btn" onClick={()=>{copyURL("url-box")}}>COPY</div>
                     <div id="copied">copied!</div>

@@ -65,12 +65,12 @@ textarea:focus, input[type=text]:focus {
   filter: brightness(110%);
   margin:0;
 }
-.btn#save-it {
+.btn.gray {
   background: #787878;
   cursor: default;
 }
 
-.loggedIn#save-it {
+#save-it.green {
   background: #1ED760;
   cursor: pointer;
 }
@@ -126,7 +126,7 @@ textarea:focus, input[type=text]:focus {
   color: gray;
 }
 
-.placeholder {
+.profile-image {
   background:lightgray;
   border-radius: 50%;
   width: 50px;
@@ -149,7 +149,7 @@ textarea:focus, input[type=text]:focus {
   font-weight: 500;
   color: white;
 }
-.profile .user-name:hover,.placeholder:hover {
+.profile .user-name:hover,.profile-image:hover {
   cursor: pointer;
 }
 
@@ -244,6 +244,24 @@ textarea:focus, input[type=text]:focus {
   flex: 1;
   padding: 10px 10px;
 }
+.playlist .nofind {
+  height:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.playlist h2 {
+  top:50%;
+  color:white;
+  font-weight: 800;
+  margin:10px;
+}
+.playlist p {
+  color: #838383;
+  margin:0 10% 20%
+}
 
 .header {
   text-transform: uppercase;
@@ -294,7 +312,11 @@ textarea:focus, input[type=text]:focus {
   overflow: hidden;
   max-width: 100%;
 }
-.song > *:hover {
+.song a{
+  color: #c7c7c7;
+  text-decoration: none;
+}
+.song a:hover {
   color: #1ED760;
   cursor: pointer;
   text-decoration: underline;
@@ -330,7 +352,7 @@ textarea:focus, input[type=text]:focus {
 }
 .buttons .save-it p {
   position: absolute;
-  bottom: 60px;
+  bottom: 80px;
   color: #1ED760;
 }
 .save-it p.loggedIn {
