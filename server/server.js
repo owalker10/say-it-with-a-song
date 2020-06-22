@@ -11,7 +11,9 @@ let dns = require('dns')
 let app = express()
 
 var {"client-id": SPOTIFY_CLIENT_ID, "client-secret": SPOTIFY_CLIENT_SECRET, "cookie-secret": COOKIE_SECRET}
-  = JSON.parse(fs.readFileSync('secret.json'))
+  = (process.env.PRODUCTION!=='1') ? 
+  JSON.parse(fs.readFileSync('secret.json')) : 
+  {"client-id": process.env.SPOTIFY_CLIENT_ID, "client-secret": process.env.SPOTIFY_CLIENT_SECRET, "cookie-secret": process.env.COOKIE_SECRET}
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
