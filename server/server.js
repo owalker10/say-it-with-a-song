@@ -30,14 +30,8 @@ const tokenCookieOptions = {
   maxAge: 100 * 24 * 60 * 60 * 1000 // 100 days
 } 
 
-
-/*
-app.use(express.static(path.join(__dirname, 'build')))
-
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'))
-})*/
-
+if (process.env.PRODUCTION!=='1')
+  app.use(express.static(path.join(__dirname, 'build')))
 
 app.get('/sethost', (req,res) => { 
   if (!app.get('hostURL')) {
@@ -520,6 +514,11 @@ app.get('/test3', (req,res) => {
 app.get('/auth', (req,res) => {
   res.send('You')
 })
+
+if (process.env.PRODUCTION!=='1')
+  app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'))
+  })
 
 
 let port = process.env.PORT || 8888
