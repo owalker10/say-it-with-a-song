@@ -40,7 +40,8 @@ app.get('/sethost', (req,res) => {
     if (process.env.PRODUCTION==='1')
       app.set('hostURL','http://localhost:3000')
     else
-      app.set('hostURL',req.protocol + '://' + req.get('host'))
+      app.set('hostURL','https' + '://' + req.get('host'))
+    console.log()
   }
   return res.send({production: process.env.PRODUCTION==='1' ? 1 : 0, url: app.get('hostURL')})
 
