@@ -29,7 +29,7 @@ const Profile = () => {
 export default Profile
 
 export const login = () => {
-    window.location.href = sessionStorage.getItem('production')==1 ? "http://localhost:8888/login" : '/login'
+    window.location.href = sessionStorage.getItem('dev')==1 ? "http://localhost:8888/login" : '/login'
 }
 
 

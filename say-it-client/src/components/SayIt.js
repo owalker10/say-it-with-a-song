@@ -18,7 +18,7 @@ const SayIt = () => {
     const [advanced, setAdvanced] = useStateSession('advanced-settings',{
         length: "minimum",
         explicit: true,
-        depth: 10
+        depth: 50
     })
 
     const setLength = () => {

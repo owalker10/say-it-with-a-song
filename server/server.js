@@ -11,7 +11,7 @@ let dns = require('dns')
 let app = express()
 
 var {"client-id": SPOTIFY_CLIENT_ID, "client-secret": SPOTIFY_CLIENT_SECRET, "cookie-secret": COOKIE_SECRET}
-  = (process.env.PRODUCTION==='1') ? 
+  = (process.env.DEV==='1') ? 
   JSON.parse(fs.readFileSync('secret.json')) : 
   {"client-id": process.env.SPOTIFY_CLIENT_ID, "client-secret": process.env.SPOTIFY_CLIENT_SECRET, "cookie-secret": process.env.COOKIE_SECRET}
 
@@ -32,25 +32,25 @@ const tokenCookieOptions = {
   maxAge: 100 * 24 * 60 * 60 * 1000 // 100 days
 } 
 
-if (process.env.PRODUCTION!=='1')
+if (process.env.DEV!=='1')
   app.use(express.static(path.join(__dirname, 'build')))
 
 app.get('/sethost', (req,res) => { 
   if (!app.get('hostURL')) {
-    if (process.env.PRODUCTION==='1')
+    if (process.env.DEV==='1')
       app.set('hostURL','http://localhost:3000')
     else
       app.set('hostURL','https' + '://' + req.get('host'))
     console.log()
   }
-  return res.send({production: process.env.PRODUCTION==='1' ? 1 : 0, url: app.get('hostURL')})
+  return res.send({dev: process.env.DEV==='1' ? 1 : 0, url: app.get('hostURL')})
 
 })
 
 // AUTHORIZATION ////////////////////////////////////////
 
 const callbackURL = () => {
-  if (process.env.PRODUCTION==='1')
+  if (process.env.DEV==='1')
     return 'http://localhost:8888/callback'
   else
     return app.get('hostURL')+'/callback'
@@ -518,7 +518,7 @@ app.get('/auth', (req,res) => {
   res.send('You')
 })
 
-if (process.env.PRODUCTION!=='1')
+if (process.env.DEV!=='1')
   app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
   })

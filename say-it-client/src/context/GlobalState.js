@@ -70,7 +70,7 @@ export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer,initialState);
     useEffect(() => {
         fetch('/sethost').then(res=>res.json()).then(data=> {
-            sessionStorage.setItem('production',data.production)
+            sessionStorage.setItem('dev',data.dev)
             sessionStorage.setItem('hostURL',data.url)})
         let playlist = JSON.parse(sessionStorage.getItem("playlist"))
         if (playlist)

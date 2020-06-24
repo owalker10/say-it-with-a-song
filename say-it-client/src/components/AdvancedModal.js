@@ -25,7 +25,7 @@ const AdvancedModal = (props) => {
             <h4>Spotify search depth</h4>
             <div className="slider-and-input">
                 <div className="slider-container">
-                    <MaterialSlider value={depth} defaultValue={10} min={1} max={50} onChange={handleSliderChange}/>
+                    <MaterialSlider value={depth} defaultValue={50} min={1} max={50} onChange={handleSliderChange}/>
                 </div>
                 <input type="text" className="slider-input" value={depth} onChange={handleSliderInputChange} onClick={(e)=>{e.target.setSelectionRange(0, e.target.value.length)}}/>
             </div>

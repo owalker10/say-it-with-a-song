@@ -13,7 +13,7 @@ const Panel = () => {
                     <hr/>
                     <p>create custom Spotify playlists from <span className="bold">personalized messages</span></p>
                 </div>
-                <p className="about-contact">about | contact</p>
+                <p style={{display:'none'}}className="about-contact">about | contact</p>
             </div>
         </div>
     )
