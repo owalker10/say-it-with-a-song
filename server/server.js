@@ -9,9 +9,9 @@ let path = require('path')
 let dns = require('dns')
 
 let app = express()
-
+console.log(process.env.DEV==='1')
 var {"client-id": SPOTIFY_CLIENT_ID, "client-secret": SPOTIFY_CLIENT_SECRET, "cookie-secret": COOKIE_SECRET}
-  = (process.env.DEV==='1') ? 
+  = (process.env.DEV) ? 
   JSON.parse(fs.readFileSync('secret.json')) : 
   {"client-id": process.env.SPOTIFY_CLIENT_ID, "client-secret": process.env.SPOTIFY_CLIENT_SECRET, "cookie-secret": process.env.COOKIE_SECRET}
 
@@ -41,7 +41,6 @@ app.get('/sethost', (req,res) => {
       app.set('hostURL','http://localhost:3000')
     else
       app.set('hostURL','https' + '://' + req.get('host'))
-    console.log()
   }
   return res.send({dev: process.env.DEV==='1' ? 1 : 0, url: app.get('hostURL')})
 
@@ -127,12 +126,12 @@ var authorize_client = () => {return new Promise(function(resolve, reject) {
     }
 
     request.post(authOptions, function(error, response, body) {
-      if (error) {
-        console.log("Error in client authorization: "+error)
-        return reject(error)
+      if (error || body.error) {
+        console.log("Error in client authorization: "+(error || body.error))
+        return reject(error || body.error)
       }
       else {
-        app.set('client_token',client_token)
+        app.set('client_token',body.access_token)
         return resolve(body.access_token)
       }
     })
@@ -332,11 +331,13 @@ var search = (query,token,[matchCase, matchPunctuation, explicit, depth]) => {
       }
       else if (response.statusCode===401) { // client auth token timed out
         app.set('client_token',null)
-        authorize_client().then( newToken => {
+        authorize_client().then(
+          newToken => {
           search(query,newToken,[matchCase, matchPunctuation, explicit, depth]).then(
             res => { return resolve(res) },
             rej => { return reject(null) }
-          )}
+          )},
+          error => { console.log("Error in client authentication: " + error) }
         )
       }
       else if (response.statusCode!==200){

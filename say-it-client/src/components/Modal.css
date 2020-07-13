@@ -18,14 +18,16 @@
 }
 
 .modal-box {
+    box-sizing: border-box;
     position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 400px;
+    /*height: 400px;*/
     min-height: 250px;
+    max-height: 80vh;
     width: 750px;
-    min-width: 600px;
+    max-width: 90vw;
     background-color: #373737;
     box-shadow: 0 0 10px rgba(0,0,0,0.25);
     border-radius: 7px;
@@ -41,7 +43,7 @@
 }
 
 .modal-box.share-it {
-    height: 330px;
+    min-height: 330px;
 }
 
 @keyframes modal-in {
@@ -118,7 +120,7 @@ h1 {
 
 .save-it.modal-box{
     width: 700px;
-    height: 750px;
+    min-height: 750px;
 }
 .save-it h1 {
     color: #1ED760;
@@ -176,7 +178,7 @@ h1 {
 
 .advanced.modal-box {
     width: 800px;
-    height: 450px;
+    min-height: 450px;
 }
 .advanced h4 {
     color:white;
@@ -223,7 +225,7 @@ h1 {
 }
 .load.modal-box {
     width: 500px;
-    height: 350px;
+    min-height: 350px;
     background-color: #373737;
     display:flex;
     flex-direction: column;
@@ -275,3 +277,76 @@ h1 {
     align-items: center;
     justify-content: center;
 }
+
+/* MEDIA QUERIES (mobile) */
+
+@media screen and (max-width: 550px) {
+    .modal-box {
+        padding: 20px;
+    }
+    .share-it.modal-box .wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .share-it.modal-box #copy {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    .share-it.modal-box #url-box {
+        max-width: 100%;
+        font-size: 22px;
+    }
+    .share-it .desc {
+        font-size: 20px;
+    }
+    h1 {
+        font-size: 35px;
+    }
+    .advanced h1 {
+        font-size: 25px;
+    }
+    .advanced h4 {
+        font-size: 20px;
+        margin: 15px 0;
+    }
+    .advanced p {
+        font-size: 13px;
+    }
+    .advanced hr {
+        margin: 20px 0;
+    }
+    .advanced label {
+        font-size: 18px;
+    }
+    .load p {
+        font-size: 20px;
+    }
+    .modal-box.load {
+        padding: 20px;
+    }
+    .save-it.modal-box {
+        min-height: 0;
+    }
+    .save-it.modal-box .desc {
+        height: 100px;
+    }
+    .save-it.modal-box .desc,.save-it.modal-box .name {
+        font-size: 20px;
+    }
+    .save-it.modal-box .fields {
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+    .save-it.modal-box .fields p {
+        font-size: 18px;
+    }
+    .save-it.modal-box .logIn {
+        font-size: 15px;
+    }
+    .save-it.modal-box h1 {
+        font-size: 25px;
+    }
+    .save-it #created {
+        font-size: 15px;
+    }
+  }
