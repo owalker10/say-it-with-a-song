@@ -86,6 +86,8 @@ textarea:focus, input[type=text]:focus {
   display: flex;
   flex-direction: column;
   flex:1;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .panel {

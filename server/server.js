@@ -8,6 +8,16 @@ let bodyParser = require('body-parser')
 let path = require('path')
 let dns = require('dns')
 
+/*
+TO DEPLOY
+
+"npm run build" in client dir
+move build dir into server dir
+"heroku login"
+"heroku git:remote -a say-it"
+"git subtree push --prefix server heroku master"
+*/
+
 let app = express()
 console.log(process.env.DEV==='1')
 var {"client-id": SPOTIFY_CLIENT_ID, "client-secret": SPOTIFY_CLIENT_SECRET, "cookie-secret": COOKIE_SECRET}
