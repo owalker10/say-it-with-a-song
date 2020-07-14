@@ -6,7 +6,7 @@ https://say-it.herokuapp.com
 
 Web app that writes out custom messages as Spotify playlists
 
-Now with responsible layout for mobile!
+Now with responsive layout for mobile!
 
 -----
 
