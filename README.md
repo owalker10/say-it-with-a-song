@@ -28,4 +28,4 @@ Its features include:
 
 <img src="https://user-images.githubusercontent.com/36974651/87363956-f905c700-c537-11ea-98b1-6ba0c90a1f50.png" width="700px">
 
-End-to-end diagram of app's function
+###### End-to-end diagram of app's function
