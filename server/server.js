@@ -13,6 +13,7 @@ TO DEPLOY
 
 "npm run build" in client dir
 move build dir into server dir
+"cd .."
 "heroku login"
 "heroku git:remote -a say-it"
 "git subtree push --prefix server heroku master"
