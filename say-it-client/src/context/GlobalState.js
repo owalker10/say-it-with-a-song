@@ -1,4 +1,5 @@
 import React, { createContext, useReducer, useEffect } from 'react'
+import placeholder from './../img/placeholder.jpg'
 
 /*
 {
@@ -45,7 +46,7 @@ const reducer = (state, action) => {
                 user: {
                     id: action.payload.id,
                     name: action.payload.display_name,
-                    image: action.payload.images[0].url 
+                    image: (action.payload.images[0]) ? action.payload.images[0].url : placeholder
                 },
                 loggedIn: true
             }
