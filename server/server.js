@@ -60,7 +60,7 @@ app.get('/sethost', (req,res) => {
 // AUTHORIZATION ////////////////////////////////////////
 
 const callbackURL = () => {
-  if (process.env.DEV==='1')
+  if (process.env.DEV==='1' || process.env.DEV=='2')
     return 'http://localhost:8888/callback'
   else
     return app.get('hostURL')+'/callback'
